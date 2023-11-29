@@ -21,6 +21,6 @@ class Series extends Production
     }
 
     public function getSeasons() {
-        return $this->$seasons;
+        return $this->seasons;
     }
 }
