@@ -7,7 +7,7 @@ $about_time = new Movie('About Time', 'English', '5', '88.5', '123');
 $parasite = new Movie('Parasite', 'Korean', '4.2', '262.7', '132');
 $another_round = new Movie('Another Round', 'Danish', '3.2', '21.7', '116');
 $everything = new Movie('Everything Everywhere All at Once', 'English / Chinese', '4.8', '141.2', '139');
-$borat = new Movie('Borat! Cultural Learnings of America for Make Benefit Glorious Nation of Kazakhstan', 'English / Kazak', '4.8', '262.6', '84');
+$borat = new Movie('Borat Subsequent Moviefilm', 'English / Kazak', '4.8', '262.6', '84');
 
 $the_office = new Series('The Office', 'English', '5', '9');
 $community = new Series('Community', 'English', '4.8', '6');
@@ -45,10 +45,11 @@ $productions = [
         <table class="table">
             <thead>
                 <th scope="col">Title</th>
+                <th scope="col">Production Type</th>
                 <th scope="col">Language</th>
                 <th scope="col">Rating</th>
-                <!-- <th scope="col">Profit</th> -->
-                <!-- <th scope="col">Duration</th> -->
+                <th scope="col">Seasons</th>
+                <th scope="col">Duration</th>
             </thead>
             <tbody>
                 <?php
@@ -56,8 +57,20 @@ $productions = [
                         ?>
                         <tr>
                             <td><?= $production->getTitle()?></td>
+                            <td><?php 
+                                    if(is_a($production, 'Movie')) { ?> Movie <?php }
+                                    elseif(is_a($production, 'Series')) { ?> Series <?php } 
+                            ?></td>
                             <td><?= $production->getLanguage()?></td>
                             <td><?= $production->getRating()?></td>
+                            <td><?php 
+                                    if(is_a($production, 'Series')) { echo $production->getSeasons(); }
+                                    elseif(is_a($production, 'Movie')) { ?> - <?php }
+                            ?></td>
+                            <td><?php 
+                                    if(is_a($production, 'Movie')) { echo $production->getDuration(); }
+                                    elseif(is_a($production, 'Series')) { ?> - <?php }
+                            ?></td>
                         </tr>
                         <?php
                     }
