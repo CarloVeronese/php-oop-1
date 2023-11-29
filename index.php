@@ -1,18 +1,32 @@
 <?php
 
-require_once __DIR__ . '/Models/Production.php';
+require_once __DIR__ . '/Models/Movie.php';
+require_once __DIR__ . '/Models/Series.php';
 
-$about_time = new Production('About Time', 'eng', '5');
-$parasite = new Production('Parasite', 'kor', '4.2');
-$another_round = new Production('Another Round', 'dan', '3.2');
-$everything = new Production('Everything, everywhere, all at once', 'eng / chi', '4.8');
+$about_time = new Movie('About Time', 'English', '5', '88.5', '123');
+$parasite = new Movie('Parasite', 'Korean', '4.2', '262.7', '132');
+$another_round = new Movie('Another Round', 'Danish', '3.2', '21.7', '116');
+$everything = new Movie('Everything Everywhere All at Once', 'English / Chinese', '4.8', '141.2', '139');
+$borat = new Movie('Borat! Cultural Learnings of America for Make Benefit Glorious Nation of Kazakhstan', 'English / Kazak', '4.8', '262.6', '84');
+
+$the_office = new Series('The Office', 'English', '5', '9');
+$community = new Series('Community', 'English', '4.8', '6');
+$scrubs = new Series('Scrubs', 'English', '4.9', '8');
+$after_life = new Series('After Life', 'English', '4.7', '3');
+$superstore = new Series('Superstore', 'English', '3.8', '6');
 
 
 $productions = [
     $about_time,
     $parasite,
     $another_round,
-    $everything
+    $everything,
+    $borat,
+    $the_office,
+    $community,
+    $scrubs,
+    $after_life,
+    $superstore
 ];
 
 ?>
@@ -33,15 +47,17 @@ $productions = [
                 <th scope="col">Title</th>
                 <th scope="col">Language</th>
                 <th scope="col">Rating</th>
+                <!-- <th scope="col">Profit</th> -->
+                <!-- <th scope="col">Duration</th> -->
             </thead>
             <tbody>
                 <?php
-                    foreach($productions as $movie) {
+                    foreach($productions as $production) {
                         ?>
                         <tr>
-                            <td><?= $movie->getTitle()?></td>
-                            <td><?= $movie->getLanguage()?></td>
-                            <td><?= $movie->getRating()?></td>
+                            <td><?= $production->getTitle()?></td>
+                            <td><?= $production->getLanguage()?></td>
+                            <td><?= $production->getRating()?></td>
                         </tr>
                         <?php
                     }

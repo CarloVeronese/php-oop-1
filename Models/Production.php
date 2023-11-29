@@ -2,11 +2,11 @@
 
 class Production 
 {
-    public $title;
-    public $language;
-    public $rating;
+    protected $title;
+    protected $language;
+    protected $rating;
 
-    function __construct($_title, $_language, $_rating) {
+    function __construct(string $_title, string $_language, $_rating) {
         $this->title = $_title;
         $this->language = $_language;
         $this->setRating($_rating);
